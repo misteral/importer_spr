@@ -14,4 +14,8 @@ Gem::Specification.new do |gem|
   gem.name          = "importer_spr"
   gem.require_paths = ["lib"]
   gem.version       = ImporterSpr::VERSION
+
+  gem.add_dependency('mail','>= 2.4.4')
+  gem.add_dependency('nokogiri','>= 1.5.2')
+
 end
