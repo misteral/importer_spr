@@ -4,8 +4,8 @@ require File.expand_path('../lib/importer_spr/version', __FILE__)
 Gem::Specification.new do |gem|
   gem.authors       = ["--al--"]
   gem.email         = ["mister-al@ya.ru"]
-  gem.description   = %q{TODO: Write a gem description}
-  gem.summary       = %q{TODO: Write a gem summary}
+  gem.description   = %q{description}
+  gem.summary       = %q{aaah}
   gem.homepage      = ""
 
   gem.files         = `git ls-files`.split($\)
