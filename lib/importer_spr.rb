@@ -41,7 +41,7 @@ module ImporterSpr
      #end
   end
 
-  self.perform
-  puts "perfotm ok"
+  #self.perform
+  #puts "perfotm ok"
   #self.cursusd
 end
