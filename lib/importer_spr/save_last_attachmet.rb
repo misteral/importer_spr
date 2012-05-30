@@ -1,8 +1,8 @@
 # encoding: utf-8
 module ImporterSpr
 
-  def self.last_attachment (dw = 1)
-    if dw = 1
+  def self.last_attachment (dw = "1")
+    if dw == "1"
       email = Mail.find(:what => :first, :count => 1, :order => :asc)
       #puts email.
       email.attachments.each do | attachment |
@@ -14,7 +14,7 @@ module ImporterSpr
           begin
             File.delete(SAVE_PATH + filename) if File.exist?(SAVE_PATH + filename)
             File.open(SAVE_PATH + filename, "w+b", 0644) {|f| f.write attachment.body.decoded}
-            return SAVE_PATH + filename
+            return filename
           rescue Exception => e
             @log.error "Unable to save data for #{SAVE_PATH + filename} because #{e.message}"
             abort
@@ -26,7 +26,7 @@ module ImporterSpr
 
       end
     else
-      SAVE_PATH + "StockAndPrice.zip"
+      "StockAndPrice.zip"
     end
   end
 end
