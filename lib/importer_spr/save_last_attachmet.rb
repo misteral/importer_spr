@@ -30,7 +30,7 @@ module ImporterSpr
         "StockAndPrice.zip"
       end
     rescue Exception => e
-      @log.error "Unable to get mail for #{Mail.defaults[:address]} because #{e.message}"
+      @log.error "Unable to get mail for conf addres because #{e.message}"
       abort
 
     end
