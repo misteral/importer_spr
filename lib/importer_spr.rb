@@ -16,7 +16,7 @@ module ImporterSpr
      #begin
        self.logger_conf ("STDOUT")
        self.init
-       zip_file = self.last_attachment("0")
+       zip_file = self.last_attachment("1")
        xml_file = self.unzip(zip_file)
        xml_data = self.parse_xml(xml_file)
        xml_data_with_images = self.parse_images (xml_data)
