@@ -4,7 +4,7 @@ module ImporterSpr
     if type =="STDOUT"
       @log = Logger.new(STDOUT)
     else
-      @log = Logger.new(file)
+      @log = Logger.new(SAVE_PATH+file)
     end
   end
 end
