@@ -1,6 +1,6 @@
 # encoding: utf-8
 module ImporterSpr
-  def parse_xml(filename)
+  def self.parse_xml(filename)
     begin
 
     rescue

@@ -10,7 +10,7 @@ module ImporterSpr
   require "importer_spr/logger_conf"
 
    def self.perform
-     logger_conf ("STDOUT")
+     self.logger_conf ("STDOUT")
      @log.error "yes yes"
      puts "run task"
    end

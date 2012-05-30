@@ -1,3 +1,4 @@
+# encoding: utf-8
 module ImporterSpr
   def self.last_attachment
     email = Mail.find(:what => :first, :count => 1, :order => :asc)
