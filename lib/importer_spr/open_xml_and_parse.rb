@@ -3,7 +3,7 @@ module ImporterSpr
   def self.parse_xml(filename)
     begin
       xml=Nokogiri::XML File.open (SAVE_PATH + filename)
-      xml.xpath('//товар'[@Вид="Принтеры лазерные"])
+      xml.xpath('//Товар[@Вид="Принтеры лазерные"]')
 
 
     rescue Exception => e
