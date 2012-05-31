@@ -7,7 +7,7 @@ module ImporterSpr
     retriever_method :pop3, :address    => "pop.yandex.com",
                             :port       => 995,
                             :user_name  => 'mister-al@ya.ru',
-                            :password   => 'Dthf2010',
+                            :password   => 'vxcvzv',
                             :enable_ssl => true
 
 
