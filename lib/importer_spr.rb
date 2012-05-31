@@ -1,6 +1,6 @@
 # encoding: utf-8
 require "nokogiri"
-require 'open-uri'
+#require 'open-uri'
 require "logger"
 require "mail"
 require "csv"
@@ -36,7 +36,7 @@ module ImporterSpr
        xml_file = self.unzip(zip_file)
        xml_data = self.parse_xml(xml_file)
        xml_data_with_images = self.parse_images (xml_data)
-       ImporterSpree.upload_to_spree(xml_data)
+       self.upload_to_spree(xml_data)
 
        #puts xml_file
      #rescue Exception => e
