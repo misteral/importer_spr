@@ -3,15 +3,18 @@ require "nokogiri"
 require 'open-uri'
 require "logger"
 require "mail"
+require "csv"
+
+Dir[File.dirname(__FILE__)+"/importer_spr/*.rb"].each {|file| require file }
 
 module ImporterSpr
-  require "importer_spr/version"
-  require "importer_spr/conf"
-  require "importer_spr/logger_conf"
-  require "importer_spr/save_last_attachmet"
-  require "importer_spr/unzip"
-  require "importer_spr/open_xml_and_parse"
-  require "importer_spr/curs_usd"
+  #require "importer_spr/version"
+  #require "importer_spr/conf"
+  #require "importer_spr/logger_conf"
+  #require "importer_spr/save_last_attachmet"
+  #require "importer_spr/unzip"
+  #require "importer_spr/open_xml_and_parse"
+  #require "importer_spr/curs_usd"
 
 #
   #tov = {}
@@ -41,7 +44,8 @@ module ImporterSpr
      #end
   end
 
-  #self.perform
+  self.perform
   #puts "perfotm ok"
-  #self.cursusd
+  #puts self.cursusd
+
 end
