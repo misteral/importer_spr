@@ -30,8 +30,9 @@ module ImporterSpr
 =end
   self.logger_conf ("STDOUT")
   self.init
-  PROXY = "10.44.33.209"
-  PORT = '842'
+  #PROXY = "10.44.33.209"
+  PROXY = ""
+  PORT = ''
 
 
   def self.perform

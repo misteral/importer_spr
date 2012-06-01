@@ -43,8 +43,8 @@ module ImporterSpr
         #-- доп параметры всякие
         tov << node['Партномер'] #[7]
         pn = node['Партномер']
-        #tov << node['Валюта']    #[8]
-        #tov << node['Цена']      #[9]
+        tov << node['Валюта']    #[8]
+        tov << node['Цена']      #[9]
 
         arr_tov << tov
         end

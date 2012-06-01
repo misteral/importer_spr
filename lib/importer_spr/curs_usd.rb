@@ -4,10 +4,10 @@ module ImporterSpr
     begin
 
       xml_url =  "http://www.cbr.ru/scripts/XML_daily.asp"
-      if PROXY
+      if !PROXY == ""
         html = open(xml_url,:proxy=>"http://#{PROXY}:#{PORT}")
       else
-          html =  open(xml_url)
+         html =  open(xml_url)
       end
       doc = Nokogiri::XML(html)
       doc.xpath('//Valute[@ID="R01235"]/Value').text

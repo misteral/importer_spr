@@ -10,7 +10,7 @@ module ImporterSpr
         pn = row[7]
         product_name  = row[3]
         url_m = 'http://market.yandex.ru/search.xml?text='+pn+''
-        if PROXY
+        if !PROXY == ""
           html = open(url_m,:proxy=>"http://#{PROXY}:#{PORT}")
         else
           html =  open(url_m)
@@ -25,11 +25,10 @@ module ImporterSpr
 
         if p1.length == 1
           tov_cat = doc.xpath("//div[@class='b-offers__pict b-offers__pict_img']/a")[0]['href']
-
         end
 
         if p1.length > 1
-          elements =
+         # elements =
         end
         else
           skip = true
