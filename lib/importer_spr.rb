@@ -1,9 +1,10 @@
 # encoding: utf-8
 require "nokogiri"
-#require 'open-uri'
+require 'open-uri'
 require "logger"
 require "mail"
 require "csv"
+#require 'socksify'
 
 Dir[File.dirname(__FILE__)+"/importer_spr/*.rb"].each {|file| require file }
 
@@ -29,6 +30,9 @@ module ImporterSpr
 =end
   self.logger_conf ("STDOUT")
   self.init
+  PROXY = "10.44.33.209"
+  PORT = '842'
+
 
   def self.perform
     #begin
