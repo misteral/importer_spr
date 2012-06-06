@@ -6,7 +6,9 @@ require "mail"
 require "csv"
 #require 'socksify'
 
-Dir[File.dirname(__FILE__)+"/importer_spr/*.rb"].each {|file| require file }
+REQUIRE_PATH = File.dirname(__FILE__)
+
+Dir[File.dirname(__FILE__)+"/importer_spr/*.rb"].sort.each {|file| require file }
 
 module ImporterSpr
   #require "importer_spr/version"
@@ -30,9 +32,10 @@ module ImporterSpr
 =end
   self.logger_conf ("STDOUT")
   self.init
-  #PROXY = "10.44.33.209"
-  PROXY = ""
-  PORT = ''
+  PROXY = "10.44.33.209:842"
+
+  #PROXY = ""
+  #PORT = ''
 
 
   def self.perform

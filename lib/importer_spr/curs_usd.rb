@@ -4,8 +4,8 @@ module ImporterSpr
     begin
 
       xml_url =  "http://www.cbr.ru/scripts/XML_daily.asp"
-      if !PROXY == ""
-        html = open(xml_url,:proxy=>"http://#{PROXY}:#{PORT}")
+      if PROXY != ""
+        html = open(xml_url,:proxy=>"http://#{PROXY}")
       else
          html =  open(xml_url)
       end

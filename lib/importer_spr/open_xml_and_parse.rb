@@ -20,7 +20,7 @@ module ImporterSpr
       ]
 
       arr_tov=[]
-      xml=Nokogiri::XML File.open (SAVE_PATH + filename)
+      xml=Nokogiri::XML File.open (ROOT_PATH + filename)
       vid_arr.each do |vid|
 
       my_xpath = '//Товар[@Вид="'+vid+'"]'

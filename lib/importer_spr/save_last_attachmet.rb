@@ -13,11 +13,11 @@ module ImporterSpr
             # extracting images for example...
             filename = attachment.filename
             begin
-              File.delete(SAVE_PATH + filename) if File.exist?(SAVE_PATH + filename)
-              File.open(SAVE_PATH + filename, "w+b", 0644) {|f| f.write attachment.body.decoded}
+              File.delete(ROOT_PATH + filename) if File.exist?(ROOT_PATH + filename)
+              File.open(ROOT_PATH + filename, "w+b", 0644) {|f| f.write attachment.body.decoded}
               return filename
             rescue Exception => e
-              @log.error "Unable to save data for #{SAVE_PATH + filename} because #{e.message}"
+              @log.error "Unable to save data for #{ROOT_PATH + filename} because #{e.message}"
               abort
             end
           else
