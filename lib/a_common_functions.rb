@@ -1,4 +1,7 @@
 # encoding: utf-8
+
+require "RMagick"
+
 module ImporterSpr
   #url - хеш значений :name - имя :url - откуда качать
   # proxy - прокси
@@ -19,12 +22,13 @@ module ImporterSpr
         content = open(url, :proxy=>"http://#{PROXY}")
       end
       #the_status = content.status[0]
-      rescue OpenURI::HTTPError => the_error
+      rescue Exception => the_error
       # some clean up work goes here and then..
-      the_status = the_error.io.status[0] # => 3xx, 4xx, or 5xx
+      #the_status = the_error.io.status[0] # => 3xx, 4xx, or 5xx
       # the_error.message is the numeric code and text in a string
-      @log.error "Whoops got a bad status code #{the_error.message} file download fail, status #{the_status}"
-      abort("File #{url} download fail")
+      @log.error "Whoops got a bad status code #{the_error.message} file download fail"
+      #@log.error ("File #{url} download fail")
+      return "none"
       end
       #do_something_with_status(the_status)
 
@@ -123,33 +127,40 @@ module ImporterSpr
     file_name = IMAGE_PATH_ORIGINAL + sku +".jpg"
     if !File.exists?(file_name) or File.zero?(file_name)
       begin
-
         open(file_name, 'wb') do |file|
           if PROXY.empty?
             file << open(url).read
             else
-            file << open(url, :proxy => PROXY).read
+            file << open(url, :proxy=>"http://#{PROXY}").read
           end
         end
-      rescue OpenURI::HTTPError => the_error
+      rescue Exception => e
 
-      the_status = the_error.io.status[0] # => 3xx, 4xx, or 5xx
-      # the_error.message is the numeric code and text in a string
-      $log.error "Whoops got a bad status code #{the_error.message} image file download fail, status #{the_status}"
-      abort("image #{url} download fail")
+        #the_status = the_error.io.status[0] # => 3xx, 4xx, or 5xx
+        # the_error.message is the numeric code and text in a string
+        @log.error "Whoops got #{url} ,a bad status code #{e.message} image file download fail"
+        #abort("image #{url} download fail")
       end
     end
     add_logo_and_copy_to_with_logo_folder(sku)
   end
 
   def self.add_logo_and_copy_to_with_logo_folder(sku)
-    original_file = IMAGE_PATH_ORIGINAL + sku +".jpg"
-    save_filename = IMAGE_PATH_WITH_LOGO + swap_sku(sku) +".jpg"
-    if !File.exists?(save_filename) or File.zero?(save_filename)
-      clown = Magick::Image.read(original_file).first
-      logo = Magick::Image.read(LOGO_IMAGE).first
-      clown = clown.composite(logo, 0, 0, Magick::OverCompositeOp)
-      clown.write(save_filename)
+    begin
+      original_file = IMAGE_PATH_ORIGINAL + sku +".jpg"
+      save_filename = IMAGE_PATH_WITH_LOGO + sku +".jpg"
+      if !File.exists?(save_filename) or File.zero?(save_filename)
+        #white_bg = Magick::Image.new(600, 600)
+        clown = Magick::Image.read(original_file).first
+        logo = Magick::Image.read(LOGO_IMAGE).first
+        clown = clown.composite(logo, 0, 0, Magick::OverCompositeOp)
+        #clown.resize(600,600)
+        clown.write(save_filename)
+        system ("convert #{save_filename} -resize 600x600 -size 600x600 xc:#fff +swap -gravity center -composite #{save_filename}")
+        save_filename
+      end
+    rescue Exception => e
+      @log.error "Unable to save_images data #{save_filename} because #{e.message}"
     end
   end
 end

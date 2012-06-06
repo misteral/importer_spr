@@ -1,16 +1,16 @@
 # encoding: utf-8
 module ImporterSpr
   def self.parse_images(xml)
-    begin
+    #begin
       count = 0
       product_name = ""
 
       xml.each do |row|
         skip = false
-        pn = row[7]
+        pn = row[7].gsub(/,|#|\s(.*)/,"").gsub(/\//, "_")
+        sku = row[0]
         product_name  = row[3]
-        url_m = 'http://market.yandex.ru/search.xml?text='+pn+''
-
+        url_m = 'http://market.yandex.ru/search.xml?text='+pn
         html = open_or_download(url_m,pn+"_search",FILES_PATH,PROXY)
         doc = Nokogiri::HTML(html)
         p1 = doc.xpath("//div[@class='b-offers b-offers_type_guru b-offers_type_guru_mix']")
@@ -22,6 +22,7 @@ module ImporterSpr
 
         if p1.length == 1
           tov_cat = doc.xpath("//div[@class='b-offers__pict b-offers__pict_img']/a")[0]['href']
+
         end
 
         if p1.length > 1
@@ -49,9 +50,6 @@ module ImporterSpr
               tov_cat = e[1]
             end
           end
-
-
-          #elements =
         end
         else
           skip = true
@@ -61,20 +59,28 @@ module ImporterSpr
         p1 = nil
         html = nil
         if !skip
-        url_market = "http://market.yandex.ru" + tov_cat
-        url_market_name = pn +"_index"
-        html = open_or_download(url_market,url_market_name,FILES_PATH,PROXY)
-        doc = Nokogiri::HTML(html)
-        img_node = doc.xpath("//span[@class='b-model-pictures__big']/a")
-        img_url = img_node.first.values[1] if img_node
-
-        count = count + 1
+          url_market = "http://market.yandex.ru" + tov_cat
+          url_market_name = pn +"_index"
+          html = open_or_download(url_market,url_market_name,FILES_PATH,PROXY)
+          doc = Nokogiri::HTML(html)
+          img_node = doc.xpath("//span[@class='b-model-pictures__big']/a/@href")
+          if img_node.text.empty?
+            img_node=doc.xpath("//span[@class='b-model-pictures__big']/img/@src")
+          end
+          if !img_node.text.empty?
+            img_url = img_node.text
+            image = download_image_add_logo(img_url,sku)
+            count = count + 1
+            xml[xml.index(row)][2] = image
+          else
+            puts "хуяссе, уж как так"
+          end
         end
       end
-
-    rescue Exception => e
-      @log.error "Unable to parse_images data #{product_name} from xml_data because #{e.message}"
-       abort
-    end
+      @log.info "Скачано картинок: #{count}, всего товаров: #{xml.length}"
+    #rescue Exception => e
+    #  @log.error "Unable to parse_images data #{product_name} from xml_data because #{e.message}"
+    #  @log.error "Market url is #{url_market}"
+    #end
   end
 end
