@@ -1,5 +1,5 @@
 # encoding: utf-8
-module ImporterSpr
+module ImportOsc
 
   def self.last_attachment (dw = "1")
     begin

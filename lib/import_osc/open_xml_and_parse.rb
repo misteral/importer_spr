@@ -1,5 +1,5 @@
 # encoding: utf-8
-module ImporterSpr
+module ImportOsc
   def self.parse_xml(filename)
     #begin
       #rows = CSV.read('/tmp/spree_export.csv', {:col_sep=>"\t",:quote_char=>"\t"})
@@ -51,7 +51,7 @@ module ImporterSpr
       end
       xml = nil
       #puts arr_tov.size
-      arr_tov
+     arr_tov
     #rescue Exception => e
      #             @log.error "Unable to parse data from xml sku num tov=#{nn} for #{SAVE_PATH + filename} because #{e.message}"
      #             abort

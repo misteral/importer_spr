@@ -1,5 +1,5 @@
 # encoding: utf-8
-module ImporterSpr
+module ImportOsc
   def self.parse_images(xml)
     #begin
       count = 0

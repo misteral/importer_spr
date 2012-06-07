@@ -2,7 +2,7 @@
 
 require "RMagick"
 
-module ImporterSpr
+module ImportOsc
   #url - хеш значений :name - имя :url - откуда качать
   # proxy - прокси
   # path - добавочный path/для уровней

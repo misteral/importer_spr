@@ -9,16 +9,16 @@ require "csv"
 
 REQUIRE_PATH = File.dirname(__FILE__)
 
-Dir[File.dirname(__FILE__)+"/importer_spr/*.rb"].sort.each {|file| require file }
+Dir[File.dirname(__FILE__)+"/import_osc/*.rb"].sort.each {|file| require file }
 
-module ImporterSpr
-  #require "importer_spr/version"
-  #require "importer_spr/conf"
-  #require "importer_spr/logger_conf"
-  #require "importer_spr/save_last_attachmet"
-  #require "importer_spr/unzip"
-  #require "importer_spr/open_xml_and_parse"
-  #require "importer_spr/curs_usd"
+module ImportOsc
+  #require "import_osc/version"
+  #require "import_osc/conf"
+  #require "import_osc/logger_conf"
+  #require "import_osc/save_last_attachmet"
+  #require "import_osc/unzip"
+  #require "import_osc/open_xml_and_parse"
+  #require "import_osc/curs_usd"
 
 #
   #tov = {}
@@ -53,7 +53,7 @@ module ImporterSpr
      #end
   end
 
-  self.perform
+  #self.perform
   #puts "perfotm ok"
   #puts self.cursusd
 

@@ -1,7 +1,7 @@
 # encoding: utf-8
 
 
-module ImporterSpr
+module ImportOsc
   ROOT_PATH = ENV['HOME']+"/import_spree/"
   FILES_PATH = ROOT_PATH+"files/"
   IMAGE_PATH = ROOT_PATH+"images/"

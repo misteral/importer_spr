@@ -1,7 +1,7 @@
 require 'csv'
 
 # encoding: utf-8
-module ImporterSpr
+module ImportOsc
   def self.upload_to_csv (arr,file)
     file = ROOT_PATH + file
     #fr = File.new(file, "w+")
