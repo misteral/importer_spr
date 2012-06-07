@@ -26,23 +26,23 @@ module ImporterSpr
       my_xpath = '//Товар[@Вид="'+vid+'"]'
       xml.xpath(my_xpath).each do |node|
         tov = []
-        tov << node['НН']            # артикул [0]
-        nn =  node['НН']
-        tov << node['НазваниеРус']   # deskcription [1]
+        tov << node['НН'].strip            # артикул [0]
+        nn =  node['НН'].strip
+        tov << node['НазваниеРус'].strip   # deskcription [1]
         tov << ""                     # image[2]
-        tov << node['Название'] # название [3]
-        if node['Валюта'] = "USD"        # цена [4]
+        tov << node['Название'].strip # название [3]
+        if node['Валюта'] == "USD".strip        # цена [4]
           #puts node['Цена']
-          tov << node['Цена'].to_f*kurs_usd.to_f
+          tov << node['Цена'].strip.to_f*kurs_usd.to_f
         else
           #puts node['Цена']
-          tov << node['Цена'].to_f
+          tov << node['Цена'].strip.to_f
         end
         tov <<  1.2             # margin [5]
-        tov << "Принтеры > Принтеры лазерыне" #категория [6]
+        tov << vid#"Принтеры > Принтеры лазерыне" #категория [6]
         #-- доп параметры всякие
-        tov << node['Партномер'] #[7]
-        pn = node['Партномер']
+        tov << node['Партномер'].strip #[7]
+        pn = node['Партномер'].strip
         tov << node['Валюта']    #[8]
         tov << node['Цена']      #[9]
 

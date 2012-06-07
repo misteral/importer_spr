@@ -44,7 +44,7 @@ module ImporterSpr
        zip_file = self.last_attachment("0")
        xml_file = self.unzip(zip_file)
        xml_data = self.parse_xml(xml_file)
-       xml_data_with_images = self.parse_images (xml_data)
+       xml_data = self.parse_images (xml_data)
        self.upload_to_csv(xml_data,"ocs.csv")
 
        #puts xml_file

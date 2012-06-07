@@ -157,8 +157,8 @@ module ImporterSpr
         #clown.resize(600,600)
         clown.write(save_filename)
         system ("convert #{save_filename} -resize 600x600 -size 600x600 xc:#fff +swap -gravity center -composite #{save_filename}")
-        save_filename
       end
+      return save_filename
     rescue Exception => e
       @log.error "Unable to save_images data #{save_filename} because #{e.message}"
     end

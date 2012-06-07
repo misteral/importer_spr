@@ -7,7 +7,7 @@ module ImporterSpr
 
       xml.each do |row|
         skip = false
-        pn = row[7].gsub(/,|#|\s(.*)/,"").gsub(/\//, "_")
+        pn = row[7].gsub(/\A#/,"").gsub(/(,|#|\s)(.*)/,"").gsub(/\//, "_")
         sku = row[0]
         product_name  = row[3]
         url_m = 'http://market.yandex.ru/search.xml?text='+pn
@@ -18,6 +18,7 @@ module ImporterSpr
         if p1
         if p1.length == 0
           skip = true
+          @log.debug "не найдено ничего по ссылке #{url_m}, ПН #{row[7]}"
         end
 
         if p1.length == 1
@@ -73,7 +74,7 @@ module ImporterSpr
             count = count + 1
             xml[xml.index(row)][2] = image
           else
-            puts "хуяссе, уж как так"
+            @log.error "Not found image in yandex card"
           end
         end
       end
@@ -82,5 +83,7 @@ module ImporterSpr
     #  @log.error "Unable to parse_images data #{product_name} from xml_data because #{e.message}"
     #  @log.error "Market url is #{url_market}"
     #end
+      #puts "нормальный выход из парсера"
+      return xml
   end
 end
