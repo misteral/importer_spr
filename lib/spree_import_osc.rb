@@ -18,9 +18,9 @@ module ImportOsc
 
   self.logger_conf ("STDOUT")
   self.init
-  PROXY = "10.44.33.209:842"
+  #PROXY = "10.44.33.209:842"
 
-  #PROXY = ""
+  PROXY = ""
   #PORT = ''
 
 
