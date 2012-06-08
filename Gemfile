@@ -1,4 +1,9 @@
-source 'https://rubygems.org'
+source 'http://rubygems.org'
 
-# Specify your gem's dependencies in import_osc.gemspec
+if RUBY_VERSION < '1.9'
+  gem 'ruby-debug'
+else
+  gem 'ruby-debug19'
+end
+
 gemspec

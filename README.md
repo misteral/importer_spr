@@ -1,29 +1,21 @@
-# ImporterSpr
+SpreeImportOsc
+==============
 
-TODO: Write a gem description
+Introduction goes here.
 
-## Installation
 
-Add this line to your application's Gemfile:
+Example
+=======
 
-    gem 'import_osc'
+Example goes here.
 
-And then execute:
+Testing
+-------
+
+Be sure to bundle your dependencies and then create a dummy test app for the specs to run against.
 
     $ bundle
+    $ bundle exec rake test_app
+    $ bundle exec rspec spec
 
-Or install it yourself as:
-
-    $ gem install import_osc
-
-## Usage
-
-TODO: Write usage instructions here
-
-## Contributing
-
-1. Fork it
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Added some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create new Pull Request
+Copyright (c) 2012 [name of extension creator], released under the New BSD License
