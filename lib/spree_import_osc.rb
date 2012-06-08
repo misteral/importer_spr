@@ -30,8 +30,8 @@ module ImportOsc
        xml_file = self.unzip(zip_file)
        xml_data = self.parse_xml(xml_file)
        xml_data = self.parse_images (xml_data)
-       self.upload_to_csv(xml_data,"ocs.csv")
-
+       file = self.upload_to_csv(xml_data,"ocs.csv")
+       return file
        #puts xml_file
      #rescue Exception => e
      #  @log.error "eeeeh some error - this: #{e.message}"
