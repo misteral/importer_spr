@@ -3,8 +3,8 @@ Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
   s.name        = 'spree_import_osc'
   s.version     = '1.1.1'
-  s.summary     = 'Импорт OSC'
-  s.description = 'Импорт OSC'
+  s.summary     = 'Import OSC'
+  s.description = 'Import OSC'
   s.required_ruby_version = '>= 1.8.7'
 
   s.author    = '--al--'
