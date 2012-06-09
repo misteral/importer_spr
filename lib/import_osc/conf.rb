@@ -6,7 +6,7 @@ module ImportOsc
   IMAGE_PATH = ROOT_PATH+"images_ocs/"
   IMAGE_PATH_ORIGINAL = IMAGE_PATH+'original/'
   IMAGE_PATH_WITH_LOGO = IMAGE_PATH+'with_logo/'
-  LOGO_IMAGE = ROOT_PATH+"/logo/chaiknet_logo.psd"
+  LOGO_IMAGE = ROOT_PATH+"/logo/chaiknet_logo2.psd"
 
   require REQUIRE_PATH + "/a_common_functions.rb"
 
